@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <NoWarn>$(NoWarn);WFO1000;CA1416</NoWarn>
+    <AssemblyName>Instalar_Spotify_Local_Streamlabs</AssemblyName>
+    <RootNamespace>SpotifyOverlayInstaller</RootNamespace>
+    <ApplicationIcon>..\assets\logo.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>1.0.0</Version>
+    <Product>Spotify Local para Streamlabs</Product>
+    <Copyright>MIT - alvarro71 (original) / ElGonzaaTK (port a Streamlabs)</Copyright>
+    <!-- Permite compilar también desde Linux/macOS (CI o desarrollo) -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <!-- Para publicar como un único .exe autocontenido:
+         dotnet publish -c Release -r win-x64 -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\shared\*.cs" Link="shared\%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <!-- Binarios que el instalador lleva dentro. Se generan antes con
+       build.ps1 (o el workflow de GitHub Actions) y se copian a Resources\ -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SpotifyOverlayServer.exe" LogicalName="SpotifyOverlayServer.exe" />
+    <EmbeddedResource Include="Resources\SpotifyOverlay.exe" LogicalName="SpotifyOverlay.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4022.49" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log*
+server/dist/
+server/config.json
+
+# .NET
+bin/
+obj/
+*.user
+.vs/
+
+# Binarios generados (se publican como Release / artefacto de GitHub Actions)
+installer/Resources/
+dist/
+*.exe
+*.pdb
+
+# SO
+Thumbs.db
+Desktop.ini
+.DS_Store

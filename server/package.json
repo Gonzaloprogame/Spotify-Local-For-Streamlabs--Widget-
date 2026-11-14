@@ -1,0 +1,25 @@
+{
+  "name": "spotify-local-streamlabs-server",
+  "version": "1.0.0",
+  "description": "Servidor del widget Spotify Now Playing para Streamlabs Desktop (port de Spotify-Local-For-OBS de alvarro71)",
+  "main": "server.js",
+  "bin": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "build": "pkg . --targets node22-win-x64 --output dist/SpotifyOverlayServer.exe"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@coooookies/windows-smtc-monitor": "^1.0.12",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@yao-pkg/pkg": "^6.6.0"
+  },
+  "pkg": {
+    "assets": [
+      "node_modules/@coooookies/windows-smtc-monitor-win32-x64-msvc/*.node"
+    ]
+  }
+}
