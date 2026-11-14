@@ -86,7 +86,7 @@ En Windows con **Node.js 22** y **.NET SDK 9**:
 powershell -ExecutionPolicy Bypass -File build.ps1
 ```
 
-O simplemente haz push: GitHub Actions genera el instalador como artefacto. Para publicar una Release, crea un tag `v1.0.0`.
+O simplemente haz push: GitHub Actions genera el instalador como artefacto. Cada push a `main` publica (o actualiza) la Release `vX.Y.Z` según la versión de `server/package.json`.
 
 Para desarrollar el servidor sin compilar nada: `cd server && npm install && npm start` y abre `http://localhost:9274/config`.
 
